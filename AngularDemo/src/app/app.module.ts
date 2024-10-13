@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './component/home/home.component';
 import { EmployeeListComponent } from './component/employee-list/employee-list.component';
 import { EmployeeComponent } from './component/employee/employee.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EmployeeComponent } from './component/employee/employee.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    RouterModule.forRoot([]) 
   ],
   providers: [
     provideClientHydration()

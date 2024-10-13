@@ -6,15 +6,17 @@ import { HomeComponent } from './component/home/home.component';
 
 const routes: Routes = [
   {
-    path: "" , component: HomeComponent
+    path: '',
+    component: HomeComponent,
   },
   {
-    path: 'employeeList', component: EmployeeListComponent
-  }
+    path: 'employeeList',
+    component: EmployeeListComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
