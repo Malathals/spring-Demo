@@ -3,3 +3,19 @@
 .container{
     margin-top:5%;
   }
+  app-employee {
+    padding: 0;
+  }
+  .table {
+    margin-bottom: 0;  /* Prevent space below tables */
+  }
+  .border{
+    padding: 10px;
+  }
+  .btn{
+    margin-right: 10px;
+  }
+  .fa {
+    margin-right: 10px;
+  }
+  

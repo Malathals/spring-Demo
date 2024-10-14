@@ -1,1 +1,38 @@
-<p>employee works!</p>
+<div class="container">
+  <div class="border">
+    <button class="btn btn-md btn-outline-primary">
+      <i class="fa fa-user">New Employee</i>
+    </button>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employee">
+            <td><span>{{ emp.userID }}</span></td>
+            <td><span>{{ emp.firstName }}</span></td>
+            <td><span>{{ emp.lastName }}</span></td>
+            <td><span>{{ emp.department }}</span></td>
+            <td><span>{{ emp.email }}</span></td>
+            <td><span>{{ emp.country }}</span></td>
+            <td>
+            <button class="btn btn-sm btn-info">
+              <i class="fa fa-search"></i>Details</button>
+            <button class="btn btn-sm btn-warning">
+              <i class="fa fa-edit"></i>Edit</button>
+            <button class="btn btn-sm btn-danger">
+              <i class="fa fa-remove"></i>Delete</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

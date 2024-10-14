@@ -22,10 +22,14 @@ export class EmployeeListComponent {
       (error) => {
         console.error('Error fetching employees:', error);
       },
+      
     );
   }
+  
+
 
   ngOnInit() {
     this.fetchEmployees();
+
   }
 }

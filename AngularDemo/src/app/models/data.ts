@@ -1,6 +1,6 @@
 
 export class Employee{
-    id: number;
+    userID: number;
     firstName: string;
     lastName: string;
     department: string;
@@ -9,7 +9,7 @@ export class Employee{
 
 
     constructor(){
-        this.id= 0,
+        this.userID= 0,
         this.firstName= ""
         this.lastName=""
         this.department=""
