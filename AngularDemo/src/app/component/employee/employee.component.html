@@ -1,6 +1,6 @@
 <div class="container">
   <div class="border">
-    <button class="btn btn-md btn-outline-primary">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
       <i class="fa fa-user">New Employee</i>
     </button>
   </div>
@@ -17,22 +17,70 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let emp of employee">
-            <td><span>{{ emp.userID }}</span></td>
-            <td><span>{{ emp.firstName }}</span></td>
-            <td><span>{{ emp.lastName }}</span></td>
-            <td><span>{{ emp.department }}</span></td>
-            <td><span>{{ emp.email }}</span></td>
-            <td><span>{{ emp.country }}</span></td>
-            <td>
-            <button class="btn btn-sm btn-info">
-              <i class="fa fa-search"></i>Details</button>
-            <button class="btn btn-sm btn-warning">
-              <i class="fa fa-edit"></i>Edit</button>
-            <button class="btn btn-sm btn-danger">
-              <i class="fa fa-remove"></i>Delete</button>
-          </td>
+      <tr *ngFor="let emp of employee">
+        <td>
+          <span>{{ emp.userID }}</span>
+        </td>
+        <td>
+          <span>{{ emp.firstName }}</span>
+        </td>
+        <td>
+          <span>{{ emp.lastName }}</span>
+        </td>
+        <td>
+          <span>{{ emp.department }}</span>
+        </td>
+        <td>
+          <span>{{ emp.email }}</span>
+        </td>
+        <td>
+          <span>{{ emp.country }}</span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-info">
+            <i class="fa fa-search"></i>Details
+          </button>
+          <button class="btn btn-sm btn-warning">
+            <i class="fa fa-edit"></i>Edit
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fa fa-remove"></i>Delete
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Employee</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <div class="input-group">
+          <input id="firstname" class="form-control" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="modal.close('Save click')"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>

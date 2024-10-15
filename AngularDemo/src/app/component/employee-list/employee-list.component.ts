@@ -15,11 +15,11 @@ export class EmployeeListComponent {
 
   fetchEmployees() {
     this.employeeService.getEmployee().subscribe(
-      (res) => {
+      (res: any) => {
         this.EmployeeList = res;
         console.log('Employees:', res);
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching employees:', error);
       },
       
