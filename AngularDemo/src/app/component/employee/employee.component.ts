@@ -16,15 +16,19 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  addNewEmployee() {
+    console.log('Adding new employee!');
+    alert('New Employee Added!');
+  }
+
   open(content: any) {
-    window.alert("hi")
-    const NgbModalRef = this.modalService.open(content);
-    NgbModalRef.result
+    const modalRef = this.modalService.open(content);
+    modalRef.result
       .then((result) => {
         console.log(`Modal closed with: ${result}`);
       })
-      .catch((error) => {
-        console.log(`Modal dismissed with reason: ${error}`);
+      .catch((reason) => {
+        console.log(`Modal dismissed with reason: ${reason}`);
       });
   }
 }
