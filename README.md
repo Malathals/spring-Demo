@@ -1,9 +1,9 @@
 Features
 
-    Spring Boot Backend: Implemented RESTful APIs to handle employee data, including adding, updating, displaying, and deleting employees.
-    CORS Configuration: Configured CORS (Cross-Origin Resource Sharing) to allow communication between the frontend and backend.
-    PostgreSQL Integration: Connected to a PostgreSQL database for storing and retrieving employee data.
-    Angular Frontend: Built an Angular application to handle the user interface, including forms for adding and editing employee details, and views to display and manage employees.
+    Spring Boot Backend: Implemented RESTful APIs to handle employee data
+    CORS Configuration
+    PostgreSQL Integration
+    Angular Frontend: to handle the user interface, including forms to manage employees.
 
 Technology Stack
 
