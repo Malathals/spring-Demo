@@ -22,6 +22,7 @@ public class EmployeeService {
     public void insertEmployee(Employee employee)
     {
         Repository.save(employee);
+        System.out.print("insert done");
     }
 
     public void updateEmployee(Employee employee)

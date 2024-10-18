@@ -1,0 +1,270 @@
+<div class="container">
+  <div class="border">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+      <i class="fa fa-user">New Employee</i>
+    </button>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of employee">
+        <!-- <td>
+          <span>{{ emp.userID }}</span>
+        </td> -->
+        <td>
+          <span>{{ emp.firstName }}</span>
+        </td>
+        <td>
+          <span>{{ emp.lastName }}</span>
+        </td>
+        <td>
+          <span>{{ emp.department }}</span>
+        </td>
+        <td>
+          <span>{{ emp.email }}</span>
+        </td>
+        <td>
+          <span>{{ emp.country }}</span>
+        </td>
+        <td>
+          <button
+            class="btn btn-sm btn-info"
+            (click)="openDetailedForm(DetailedForm, emp)"
+          >
+            <i class="fa fa-search"></i>Details
+          </button>
+          <button
+            class="btn btn-sm btn-warning"
+            (click)="openEditiedForm(DetailedForm, emp)"
+          >
+            <i class="fa fa-edit"></i>Edit
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteEmployee(emp.userID)"
+          >
+            <i class="fa fa-remove"></i>Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Employee</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form #userForm="ngForm" (ngSubmit)="submitForm(newEmployee)">
+      <div class="form-group">
+        <label for="firstname">First name</label>
+        <div class="input-group">
+          <input
+            id="firstname"
+            class="form-control"
+            name="firstName"
+            [(ngModel)]="newEmployee.firstName"
+            required=""
+          />
+          <div *ngIf="userForm.submitted && !newEmployee.firstName">
+            <small class="text-danger"> First name is required </small>
+          </div>
+        </div>
+
+        <label for="lastname">Last name</label>
+        <div class="input-group">
+          <input
+            id="lastname"
+            class="form-control"
+            name="lastName"
+            [(ngModel)]="newEmployee.lastName"
+            required
+          />
+        </div>
+        <div *ngIf="userForm.submitted && !newEmployee.lastName">
+          <small class="text-danger"> Last name is required </small>
+        </div>
+
+        <label for="Department">Department</label>
+        <div class="input-group">
+          <input
+            id="Department"
+            class="form-control"
+            name="Department"
+            [(ngModel)]="newEmployee.department"
+            required
+          />
+        </div>
+        <div *ngIf="userForm.submitted && !newEmployee.department">
+          <small class="text-danger"> department name is required </small>
+        </div>
+        <label for="Email">Email</label>
+        <div class="input-group">
+          <input
+            type="email"
+            id="Email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="newEmployee.email"
+            required=""
+          />
+          <div
+            *ngIf="
+              userForm.submitted &&
+              !newEmployee.email &&
+              userForm.controls['email']?.invalid
+            "
+          >
+            <small class="text-danger"> A valid email is required </small>
+          </div>
+        </div>
+
+        <label for="Country">Country</label>
+        <div class="input-group">
+          <input
+            id="Country"
+            class="form-control"
+            name="country"
+            [(ngModel)]="newEmployee.country"
+          />
+        </div>
+        <div *ngIf="userForm.submitted && !newEmployee.country">
+          <small class="text-danger"> country name is required </small>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="submit"
+          class="btn btn-outline-dark"
+          [disabled]="userForm.invalid"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #DetailedForm let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"> Employee</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form #userForm="ngForm" (ngSubmit)="EditForm(newEmployee)">
+      <div class="form-group">
+        <label for="firstname">First name</label>
+        <div class="input-group">
+          <input
+            id="firstname"
+            class="form-control"
+            name="firstName"
+            [(ngModel)]="newEmployee.firstName"
+            [readonly]="isReadOnly"
+          />
+        </div>
+
+        <label for="lastname">Last name</label>
+        <div class="input-group">
+          <input
+            id="lastname"
+            class="form-control"
+            name="lastName"
+            [(ngModel)]="newEmployee.lastName"
+            [readonly]="isReadOnly"
+          />
+        </div>
+        <div *ngIf="userForm.submitted && !newEmployee.lastName">
+          <small class="text-danger"> Last name is required </small>
+        </div>
+
+        <label for="Department">Department</label>
+        <div class="input-group">
+          <input
+            id="Department"
+            class="form-control"
+            name="Department"
+            [(ngModel)]="newEmployee.department"
+            required
+            [readonly]="isReadOnly"
+          />
+        </div>
+        <div *ngIf="userForm.submitted && !newEmployee.department">
+          <small class="text-danger"> department name is required </small>
+        </div>
+        <label for="Email">Email</label>
+        <div class="input-group">
+          <input
+            type="email"
+            id="Email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="newEmployee.email"
+            required
+            [readonly]="isReadOnly"
+          />
+          <div
+            *ngIf="
+              userForm.submitted &&
+              !newEmployee.email &&
+              userForm.controls['email']?.invalid
+            "
+          >
+            <small class="text-danger"> A valid email is required </small>
+          </div>
+        </div>
+
+        <label for="Country">Country</label>
+        <div class="input-group">
+          <input
+            id="Country"
+            class="form-control"
+            name="country"
+            [(ngModel)]="newEmployee.country"
+            [readonly]="isReadOnly"
+          />
+        </div>
+        <div *ngIf="userForm.submitted && !newEmployee.country">
+          <small class="text-danger"> country name is required </small>
+        </div>
+        <div *ngIf="!isReadOnly" class="modal-footer"> 
+          <button
+          type="submit"
+          class="btn btn-outline-dark"
+          [disabled]="userForm.invalid"
+        >
+          Save
+        </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
