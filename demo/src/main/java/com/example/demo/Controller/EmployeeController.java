@@ -27,13 +27,13 @@ public class EmployeeController {
         EmployeeService.insertEmployee(employee);
     }
 
-    @PutMapping("/updateEmployee/{employeeID} ")
-    public void updateEmployee(@PathVariable("employeeID") Integer userID, @RequestBody Employee employee){
+    @PutMapping("/updateEmployee/{employeeID}")
+    public void updateEmployee(@PathVariable("employeeID") Integer employeeID, @RequestBody Employee employee){
         EmployeeService.updateEmployee(employee);
     }
 
     @DeleteMapping("/deleteEmployee/{employeeID}")
-    public void deleteEmployee(@PathVariable("employeeId") Integer employeeID){
+    public void deleteEmployee(@PathVariable("employeeID") Integer employeeID){
         EmployeeService.deleteEmployee(employeeID);
     }
 
