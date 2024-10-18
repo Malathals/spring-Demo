@@ -17,7 +17,6 @@ export class EmployeeListComponent {
     this.employeeService.getEmployee().subscribe(
       (res: any) => {
         this.EmployeeList = res;
-        console.log('Employees:', res);
       },
       (error: any) => {
         console.error('Error fetching employees:', error);

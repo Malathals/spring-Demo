@@ -14,4 +14,26 @@ export class EmployeeService {
       'http://localhost:3200/employee/getEmployees',
     );
   }
+
+  postEmployee(newEmployee : Employee): Observable<any>
+  {
+   return this.http.post(      
+    'http://localhost:3200/employee/insertEmployee', newEmployee
+    )
+  }
+
+  deleteEmployee(employeeID : number): Observable<any>
+  {
+   return this.http.delete(      
+    `http://localhost:3200/employee/deleteEmployee/${employeeID}`
+    )
+  }
+
+  editEmployee(employeeID : number,newEmployee : Employee) : Observable<any>
+  {
+   return this.http.put(      
+    `http://localhost:3200/employee/updateEmployee/${employeeID}`, newEmployee 
+    )
+  }
+
 }
